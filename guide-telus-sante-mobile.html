@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide rapide — Prendre rendez-vous en ligne</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+
+  :root {
+    --bg: #f6f8f7;
+    --card: #ffffff;
+    --ink: #1a2b2a;
+    --ink-soft: #4a5b5a;
+    --muted: #6b7c7b;
+    --line: #e6ebea;
+    --primary: #0b8a7a;
+    --primary-soft: #e6f5f2;
+    --accent: #f4a261;
+    --warn-bg: #fff7ed;
+    --warn-ink: #92400e;
+    --warn-line: #fcd9a8;
+    --radius: 14px;
+    --radius-sm: 10px;
+    --shadow: 0 1px 2px rgba(16,24,40,.04), 0 8px 24px rgba(16,24,40,.06);
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px 16px 32px;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #0b8a7a 0%, #0d9b89 100%);
+    border-radius: var(--radius);
+    padding: 22px 20px;
+    color: #fff;
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+  }
+  .header .eyebrow {
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    opacity: .85;
+    font-weight: 600;
+  }
+  .header h1 {
+    margin: 6px 0 4px;
+    font-size: 22px;
+    line-height: 1.25;
+    font-weight: 700;
+  }
+  .header p {
+    margin: 0;
+    font-size: 14px;
+    opacity: .92;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px 18px 16px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow);
+  }
+  .card h2 {
+    margin: 0 0 4px;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .step-num {
+    flex: 0 0 30px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card p.lead {
+    margin: 4px 0 10px 40px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  ul.bullets {
+    margin: 8px 0 0 40px;
+    padding: 0;
+    list-style: none;
+  }
+  ul.bullets li {
+    position: relative;
+    padding: 6px 0 6px 20px;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+  ul.bullets li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary);
+  }
+  ul.bullets li strong { color: var(--ink); }
+
+  /* Warning */
+  .warn {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-line);
+    border-radius: var(--radius);
+    padding: 14px 14px 12px;
+    margin-bottom: 14px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .warn .icon {
+    flex: 0 0 22px;
+    margin-top: 1px;
+  }
+  .warn h3 {
+    margin: 0 0 4px;
+    font-size: 14.5px;
+    color: var(--warn-ink);
+    font-weight: 700;
+  }
+  .warn p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--warn-ink);
+    line-height: 1.45;
+  }
+
+  /* Tips */
+  .tips {
+    background: var(--primary-soft);
+    border: 1px solid #c8e6df;
+    border-radius: var(--radius);
+    padding: 16px 18px;
+  }
+  .tips h3 {
+    margin: 0 0 8px;
+    color: var(--primary);
+    font-size: 15px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .tips ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+  .tips li {
+    font-size: 13.5px;
+    color: var(--ink);
+    margin: 4px 0;
+  }
+
+  /* Footer */
+  .foot {
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 18px;
+  }
+
+  /* Mobile tweaks */
+  @media (max-width: 480px) {
+    .wrap { padding: 14px 12px 24px; }
+    .header { padding: 18px 16px; }
+    .header h1 { font-size: 19px; }
+    .card { padding: 16px 14px 14px; }
+    .card h2 { font-size: 16px; }
+    .card p.lead, ul.bullets { margin-left: 40px; }
+    ul.bullets li { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- HEADER -->
+    <div class="header">
+      <div class="eyebrow">Guide rapide</div>
+      <h1>Prendre rendez-vous en ligne avec TELUS Santé</h1>
+      <p>Suivez ces étapes simples pour réserver votre visite en quelques minutes.</p>
+    </div>
+
+    <!-- IMPORTANT WARNING -->
+    <div class="warn">
+      <svg class="icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#92400e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+        <line x1="12" y1="9" x2="12" y2="13"/>
+        <line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+      <div>
+        <h3>Important — à lire avant de commencer</h3>
+        <p>Les informations que vous saisissez sur la page de connexion <strong>doivent correspondre exactement</strong> à celles de votre dossier patient (nom, date de naissance, courriel ou téléphone). Sinon, le système ne pourra pas vous reconnaître.</p>
+      </div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="card">
+      <h2><span class="step-num">1</span> Cliquez sur « Prendre rendez-vous »</h2>
+      <p class="lead">Sur notre site, cliquez sur le bouton de réservation en ligne. Une page sécurisée TELUS Santé s'ouvrira.</p>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="card">
+      <h2><span class="step-num">2</span> Identifiez-vous</h2>
+      <p class="lead">Remplissez <strong>tous les champs demandés</strong> sur la page de connexion :</p>
+      <ul class="bullets">
+        <li><strong>Prénom et nom</strong> (tels qu'inscrits à votre dossier)</li>
+        <li><strong>Date de naissance</strong></li>
+        <li><strong>Courriel</strong> et/ou <strong>numéro de téléphone</strong></li>
+      </ul>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="card">
+      <h2><span class="step-num">3</span> Nouveau patient ?</h2>
+      <p class="lead">Si c'est votre première visite, sélectionnez « Nouveau patient » et complétez le formulaire d'inscription. Vos informations seront enregistrées pour vos prochaines visites.</p>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="card">
+      <h2><span class="step-num">4</span> Choisissez le motif de la visite</h2>
+      <p class="lead">Sélectionnez la raison de votre rendez-vous dans la liste (consultation initiale, suivi, ajustement, etc.).</p>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="card">
+      <h2><span class="step-num">5</span> Sélectionnez votre professionnel</h2>
+      <p class="lead">Choisissez le chiropraticien ou la chiropraticienne avec qui vous souhaitez prendre rendez-vous.</p>
+    </div>
+
+    <!-- STEP 6 -->
+    <div class="card">
+      <h2><span class="step-num">6</span> Choisissez date et heure</h2>
+      <p class="lead">Naviguez dans le calendrier et sélectionnez une plage horaire qui vous convient parmi les disponibilités affichées.</p>
+    </div>
+
+    <!-- STEP 7 -->
+    <div class="card">
+      <h2><span class="step-num">7</span> Confirmez votre rendez-vous</h2>
+      <p class="lead">Vérifiez les détails, puis confirmez. Vous recevrez une <strong>confirmation par courriel</strong> avec toutes les informations.</p>
+    </div>
+
+    <!-- TIPS -->
+    <div class="tips">
+      <h3>
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#0b8a7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18h6"/>
+          <path d="M10 22h4"/>
+          <path d="M12 2a7 7 0 0 0-4 12.74V17h8v-2.26A7 7 0 0 0 12 2z"/>
+        </svg>
+        Conseils utiles
+      </h3>
+      <ul>
+        <li>Si la connexion échoue, vérifiez l'orthographe de votre nom et votre date de naissance.</li>
+        <li>Utilisez le même courriel ou téléphone que celui fourni à la clinique.</li>
+        <li>Besoin d'aide ? Contactez-nous directement, nous vous accompagnons avec plaisir.</li>
+      </ul>
+    </div>
+
+    <div class="foot">Réservation sécurisée — TELUS Santé (DCS)</div>
+
+  </div>
+</body>
+</html>

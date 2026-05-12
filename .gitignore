@@ -1,0 +1,13 @@
+# Dropbox / macOS junk
+.DS_Store
+.~lock.*#
+*.tmp
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# Office temp
+~$*
+
+# Logs
+*.log
